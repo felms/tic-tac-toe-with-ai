@@ -2,11 +2,9 @@ public class Game {
 
     private String table;
     private GameState gameState;
-    private char player;
 
     public Game() {
         this.table = "_________";
-        this.player = 'X';
         this.gameState = GameState.GAME_NOT_FINISHED;
     }
 
@@ -34,49 +32,40 @@ public class Game {
         System.out.println("---------");
     }
 
-    // Faz uma jogada
-    // retorna falso se a jogada
-    // não pude ser feita (célula ocupada)
-    public boolean makeMove(int x, int y) {
+    // Faz uma jogada.
+    // Retorna falso se a jogada
+    // não puder ser feita (célula ocupada)
+    public boolean makeMove(Player player, Move move) {
 
-        int inputX = (x - 1) * 3;
-        int intputY = y - 1;
-        int pos = inputX + intputY;
+        int inputX = (move.getX() - 1) * 3;
+        int inputY = move.getY() - 1;
+        int pos = inputX + inputY;
 
         if (this.table.charAt(pos) != '_') {
             return false;
         }
 
         StringBuilder sb = new StringBuilder(this.table);
-        sb.setCharAt(pos, this.player);
+        sb.setCharAt(pos, player.getPlayingAs());
 
         this.table = sb.toString();
-
-        this.player = this.player == 'X' ? 'O' : 'X';
 
         this.gameState = analizeGame();
 
         return true;
     }
 
+    // Testa se o jogo terminou.
+    // Qualquer uma dessas três condições
+    // indica fim de jogo
+    public boolean isTheGameFinished() {
+        return this.getGameState() == GameState.DRAW
+                || this.getGameState() == GameState.X_WINS
+                || this.getGameState() == GameState.O_WINS;
+    }
+
     // Retorna o estado atual do jogo.
     private GameState analizeGame() {
-
-        int countX = 0;
-        int countO = 0;
-        for (int i = 0; i < this.table.length(); i++) {
-            if (this.table.charAt(i) == 'X') {
-                countX++;
-            } else if (this.table.charAt(i) == 'O') {
-                countO++;
-            }
-        }
-
-        if (countX > countO) {
-            this.player = 'O';
-        } else {
-            this.player = 'X';
-        }
 
         if (!this.hasEmptyCells() && !this.hasThreeXs() && !this.hasThreeOs()) {
             return GameState.DRAW;
@@ -89,7 +78,7 @@ public class Game {
         return GameState.GAME_NOT_FINISHED;
     }
 
-    // Checa se existem três 'X' em sequencia
+    // Checa se existem três 'X' em sequência
     // na vertical, horizontal e diagonal
     private boolean hasThreeXs() {
         char[] t = this.table.toCharArray();
@@ -145,10 +134,12 @@ public class Game {
 
     //Checa se a tabela ainda possui células vazias
     private boolean hasEmptyCells() {
+
         return this.table.contains("_");
     }
 
     public GameState getGameState() {
+
         return gameState;
     }
 }

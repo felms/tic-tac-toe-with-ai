@@ -1,42 +1,34 @@
-package tictactoe;
-
-import java.util.Scanner;
-
 public class Main {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter the cells: ");
-        String input = scanner.nextLine();
 
-        Game game = new Game(input);
+        Game game = new Game();
+        Player player = new Player('X');
+        AIPlayer aiPlayer = new AIPlayer();
         game.printGrid();
 
-        boolean inputOk = false;
-        int x = -1;
-        int y = -1;
-        do {
-            System.out.print("Enter the coordinates: ");
-            String[] s = scanner.nextLine().split("\\s+");
-            try {
-                x = Integer.parseInt(s[0]);
-                y = Integer.parseInt(s[1]);
+        boolean exit = false;
+        while (!exit) {
+            Move move;
+            do {
+                move = player.getMove();
+            } while (!game.makeMove(player, move));
+            game.printGrid();
 
-                if (x < 1 || x > 3 || y < 1 || y > 3) {
-                    System.out.println("Coordinates should be from 1 to 3!");
-                } else {
-                    if (!game.makeMove(x, y)) {
-                        System.out.println("This cell is occupied! Choose another one!");
-                    } else {
-                        inputOk = true;
-                    }
-                }
-
-            } catch (NumberFormatException | ArrayIndexOutOfBoundsException exception) {
-                System.out.println("You should enter numbers!");
+            if (game.isTheGameFinished()) {
+                break;
             }
-        } while (!inputOk);
 
-        game.printGrid();
+            System.out.println("Making move level \"easy\"");
+            do {
+                move = aiPlayer.getMove();
+            } while (!game.makeMove(aiPlayer, move));
+            game.printGrid();
+
+            if (game.isTheGameFinished()) {
+                break;
+            }
+        }
+
         System.out.println(game.getGameState());
     }
 }
