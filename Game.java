@@ -35,7 +35,7 @@ public class Game {
     // Faz uma jogada.
     // Retorna falso se a jogada
     // não puder ser feita (célula ocupada)
-    public boolean makeMove(Player player, Move move) {
+    public boolean makeMove(Player humanPlayer, Move move) {
 
         int inputX = (move.getX() - 1) * 3;
         int inputY = move.getY() - 1;
@@ -46,7 +46,7 @@ public class Game {
         }
 
         StringBuilder sb = new StringBuilder(this.table);
-        sb.setCharAt(pos, player.getPlayingAs());
+        sb.setCharAt(pos, humanPlayer.getPlayingAs());
 
         this.table = sb.toString();
 

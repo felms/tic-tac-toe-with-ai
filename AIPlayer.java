@@ -1,9 +1,21 @@
 import java.util.Random;
 
-public class AIPlayer extends Player{
+public class AIPlayer implements Player{
 
-    public AIPlayer() {
-        super('O');
+    private char playingAs;
+
+    public AIPlayer(char playingAs) {
+        this.playingAs = playingAs;
+    }
+
+    @Override
+    public String getMessage() {
+        return "Making move level \"easy\"";
+    }
+
+    @Override
+    public char getPlayingAs() {
+        return this.playingAs;
     }
 
     @Override
