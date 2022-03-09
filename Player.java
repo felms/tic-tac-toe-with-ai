@@ -1,6 +1,6 @@
 public interface Player {
 
-    public Move getMove();
+    public Move getMove(String table);
 
     public String getMessage();
 

@@ -43,7 +43,7 @@ public class Main {
         while(true) {
             Move move;
             do {
-                move = player1.getMove();
+                move = player1.getMove(game.getTable());
             } while (!game.makeMove(player1, move));
             System.out.println(player1.getMessage());
             game.printGrid();
@@ -52,7 +52,7 @@ public class Main {
             }
 
             do {
-                move = player2.getMove();
+                move = player2.getMove(game.getTable());
             } while (!game.makeMove(player2, move));
             System.out.println(player2.getMessage());
             game.printGrid();
@@ -72,7 +72,10 @@ public class Main {
                 player1 = new HumanPlayer('X');
                 break;
             case "easy":
-                player1 = new AIPlayer('X');
+                player1 = new ELPlayer('X');
+                break;
+            case "medium":
+                player1 = new MLPlayer('X');
                 break;
         }
 
@@ -81,7 +84,10 @@ public class Main {
                 player2 = new HumanPlayer('O');
                 break;
             case "easy":
-                player2 = new AIPlayer('O');
+                player2 = new ELPlayer('O');
+                break;
+            case "medium":
+                player2 = new MLPlayer('O');
                 break;
         }
     }
@@ -101,11 +107,11 @@ public class Main {
             return false;
         }
 
-        if (!(parameters[1].equals("easy") || parameters[1].equals("user"))){
+        if (!(parameters[1].equals("easy") || parameters[1].equals("user") || parameters[1].equals("medium"))){
             return false;
         }
 
-        if (!(parameters[2].equals("easy") || parameters[2].equals("user"))){
+        if (!(parameters[2].equals("easy") || parameters[2].equals("user") || parameters[2].equals("medium"))){
             return false;
         }
 

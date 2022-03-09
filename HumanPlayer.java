@@ -11,7 +11,7 @@ public class HumanPlayer implements Player{
     }
 
     @Override
-    public Move getMove() {
+    public Move getMove(String table) {
         int x = -1;
         int y = -1;
         boolean moveCreated = false;

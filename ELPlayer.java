@@ -1,10 +1,10 @@
 import java.util.Random;
 
-public class AIPlayer implements Player{
+public class ELPlayer implements Player{
 
     private char playingAs;
 
-    public AIPlayer(char playingAs) {
+    public ELPlayer(char playingAs) {
         this.playingAs = playingAs;
     }
 
@@ -19,7 +19,7 @@ public class AIPlayer implements Player{
     }
 
     @Override
-    public Move getMove() {
+    public Move getMove(String table) {
         Random random = new Random();
         int x = random.nextInt(3) + 1;
         int y = random.nextInt(3) + 1;

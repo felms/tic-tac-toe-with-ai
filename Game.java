@@ -138,6 +138,10 @@ public class Game {
         return this.table.contains("_");
     }
 
+    public String getTable() {
+        return table;
+    }
+
     public GameState getGameState() {
 
         return gameState;
