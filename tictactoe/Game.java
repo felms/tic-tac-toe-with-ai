@@ -1,3 +1,7 @@
+package tictactoe;
+
+import tictactoe.player.Player;
+
 public class Game {
 
     private String table;

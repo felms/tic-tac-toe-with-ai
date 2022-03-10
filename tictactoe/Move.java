@@ -1,3 +1,5 @@
+package tictactoe;
+
 public class Move {
 
     private int x;

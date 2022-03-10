@@ -1,3 +1,5 @@
+package tictactoe;
+
 public enum GameState {
 
     GAME_NOT_FINISHED("Game not finished"),

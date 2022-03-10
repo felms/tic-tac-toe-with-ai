@@ -1,3 +1,7 @@
+package tictactoe.player;
+
+import tictactoe.Move;
+
 public abstract class Player {
 
     private char playingAs;

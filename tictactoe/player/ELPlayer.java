@@ -1,3 +1,6 @@
+package tictactoe.player;
+
+import tictactoe.Move;
 import java.util.Random;
 
 public class ELPlayer extends Player{

@@ -1,3 +1,6 @@
+package tictactoe;
+
+import tictactoe.player.*;
 import java.util.Scanner;
 
 public class Main {
