@@ -1,6 +1,7 @@
 package tictactoe.player;
 
 import tictactoe.Move;
+
 import java.util.Scanner;
 
 public class HumanPlayer extends Player{

@@ -1,6 +1,7 @@
 package tictactoe.player;
 
 import tictactoe.Move;
+
 import java.util.Random;
 
 public class MLPlayer extends Player{
@@ -8,7 +9,8 @@ public class MLPlayer extends Player{
     private Move currentMove;
 
     public MLPlayer(char playingAs) {
-        super(playingAs);
+
+       super(playingAs);
     }
 
     @Override
@@ -196,6 +198,5 @@ public class MLPlayer extends Player{
     public String getMessage() {
         return "Making move level \"medium\"";
     }
-
 
 }

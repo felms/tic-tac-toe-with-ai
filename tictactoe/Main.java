@@ -1,6 +1,7 @@
 package tictactoe;
 
 import tictactoe.player.*;
+
 import java.util.Scanner;
 
 public class Main {
@@ -80,6 +81,9 @@ public class Main {
             case "medium":
                 player1 = new MLPlayer('X');
                 break;
+            case "hard":
+                player1 = new HLPlayer('X');
+                break;
         }
 
         switch(parameters[2]) {
@@ -91,6 +95,9 @@ public class Main {
                 break;
             case "medium":
                 player2 = new MLPlayer('O');
+                break;
+            case "hard":
+                player2 = new HLPlayer('O');
                 break;
         }
     }
@@ -110,11 +117,17 @@ public class Main {
             return false;
         }
 
-        if (!(parameters[1].equals("easy") || parameters[1].equals("user") || parameters[1].equals("medium"))){
+        if (!(parameters[1].equals("easy")
+                || parameters[1].equals("user")
+                || parameters[1].equals("medium")
+                || parameters[1].equals("hard"))){
             return false;
         }
 
-        if (!(parameters[2].equals("easy") || parameters[2].equals("user") || parameters[2].equals("medium"))){
+        if (!(parameters[2].equals("easy")
+                || parameters[2].equals("user")
+                || parameters[2].equals("medium")
+                || parameters[2].equals("hard"))){
             return false;
         }
 

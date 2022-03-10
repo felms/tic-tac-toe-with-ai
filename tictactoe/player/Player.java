@@ -14,7 +14,7 @@ public abstract class Player {
 
     public abstract String getMessage();
 
-    public char getPlayingAs(){
+    public char getPlayingAs() {
         return this.playingAs;
     }
 }
