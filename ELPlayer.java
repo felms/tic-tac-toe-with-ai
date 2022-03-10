@@ -1,21 +1,15 @@
 import java.util.Random;
 
-public class ELPlayer implements Player{
+public class ELPlayer extends Player{
 
-    private char playingAs;
 
     public ELPlayer(char playingAs) {
-        this.playingAs = playingAs;
+        super(playingAs);
     }
 
     @Override
     public String getMessage() {
         return "Making move level \"easy\"";
-    }
-
-    @Override
-    public char getPlayingAs() {
-        return this.playingAs;
     }
 
     @Override

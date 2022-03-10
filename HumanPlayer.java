@@ -1,12 +1,11 @@
 import java.util.Scanner;
 
-public class HumanPlayer implements Player{
+public class HumanPlayer extends Player{
 
-    private char playingAs;
     private Scanner scanner;
 
     public HumanPlayer(char playingAs) {
-        this.playingAs = playingAs;
+        super(playingAs);
         this.scanner = new Scanner(System.in);
     }
 
@@ -41,8 +40,4 @@ public class HumanPlayer implements Player{
         return "";
     }
 
-    @Override
-    public char getPlayingAs() {
-        return playingAs;
-    }
 }

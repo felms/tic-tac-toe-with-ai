@@ -1,8 +1,16 @@
-public interface Player {
+public abstract class Player {
 
-    public Move getMove(String table);
+    private char playingAs;
 
-    public String getMessage();
+    public Player(char playingAs) {
+        this.playingAs = playingAs;
+    }
 
-    public char getPlayingAs();
+    public abstract Move getMove(String table);
+
+    public abstract String getMessage();
+
+    public char getPlayingAs(){
+        return this.playingAs;
+    }
 }

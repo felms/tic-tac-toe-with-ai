@@ -1,12 +1,11 @@
 import java.util.Random;
 
-public class MLPlayer implements Player{
+public class MLPlayer extends Player{
 
-    private char playingAs;
     private Move currentMove;
 
     public MLPlayer(char playingAs) {
-        this.playingAs = playingAs;
+        super(playingAs);
     }
 
     @Override
@@ -30,70 +29,70 @@ public class MLPlayer implements Player{
     private boolean hasWinningMove(String table) {
         char[] t = table.toCharArray();
 
-        if (((this.playingAs == t[1] && this.playingAs == t[2])
-                || (this.playingAs == t[3] && this.playingAs == t[6])
-                || (this.playingAs == t[4] && this.playingAs == t[8]))
+        if (((this.getPlayingAs() == t[1] && this.getPlayingAs() == t[2])
+                || (this.getPlayingAs() == t[3] && this.getPlayingAs() == t[6])
+                || (this.getPlayingAs() == t[4] && this.getPlayingAs() == t[8]))
                 && t[0] == '_'){
             this.currentMove = new Move(1, 1);
             return true;
         }
 
-        if (((this.playingAs == t[0] && this.playingAs == t[2])
-                || (this.playingAs == t[4] && this.playingAs == t[7]))
+        if (((this.getPlayingAs() == t[0] && this.getPlayingAs() == t[2])
+                || (this.getPlayingAs() == t[4] && this.getPlayingAs() == t[7]))
                 && t[1] == '_') {
             this.currentMove = new Move(1, 2);
             return true;
         }
 
-        if (((this.playingAs == t[0] && this.playingAs == t[1])
-                || (this.playingAs == t[4] && this.playingAs == t[6])
-                || (this.playingAs == t[5] && this.playingAs == t[8]))
+        if (((this.getPlayingAs() == t[0] && this.getPlayingAs() == t[1])
+                || (this.getPlayingAs() == t[4] && this.getPlayingAs() == t[6])
+                || (this.getPlayingAs() == t[5] && this.getPlayingAs() == t[8]))
                 && t[2] == '_') {
             this.currentMove = new Move(1, 3);
             return true;
         }
 
-        if (((this.playingAs == t[0] && this.playingAs == t[6])
-                || (this.playingAs == t[4] && this.playingAs == t[5]))
+        if (((this.getPlayingAs() == t[0] && this.getPlayingAs() == t[6])
+                || (this.getPlayingAs() == t[4] && this.getPlayingAs() == t[5]))
                 && t[3] == '_') {
             this.currentMove = new Move(2, 1);
             return true;
         }
 
-        if (((this.playingAs == t[0] && this.playingAs == t[8])
-                || (this.playingAs == t[2] && this.playingAs == t[6])
-                || (this.playingAs == t[1] && this.playingAs == t[7])
-                || (this.playingAs == t[3] && this.playingAs == t[5]))
+        if (((this.getPlayingAs() == t[0] && this.getPlayingAs() == t[8])
+                || (this.getPlayingAs() == t[2] && this.getPlayingAs() == t[6])
+                || (this.getPlayingAs() == t[1] && this.getPlayingAs() == t[7])
+                || (this.getPlayingAs() == t[3] && this.getPlayingAs() == t[5]))
                 && t[4] == '_') {
             this.currentMove = new Move(2, 2);
             return true;
         }
 
-        if (((this.playingAs == t[2] && this.playingAs == t[8])
-                || (this.playingAs == t[3] && this.playingAs == t[4]))
+        if (((this.getPlayingAs() == t[2] && this.getPlayingAs() == t[8])
+                || (this.getPlayingAs() == t[3] && this.getPlayingAs() == t[4]))
                 && t[5] == '_') {
             this.currentMove = new Move(2, 3);
             return true;
         }
 
-        if (((this.playingAs == t[0] && this.playingAs == t[3])
-                || (this.playingAs == t[2] && this.playingAs == t[4])
-                || (this.playingAs == t[7] && this.playingAs == t[8]))
+        if (((this.getPlayingAs() == t[0] && this.getPlayingAs() == t[3])
+                || (this.getPlayingAs() == t[2] && this.getPlayingAs() == t[4])
+                || (this.getPlayingAs() == t[7] && this.getPlayingAs() == t[8]))
                 && t[6] == '_') {
             this.currentMove = new Move(3, 1);
             return true;
         }
 
-        if (((this.playingAs == t[1] && this.playingAs == t[4])
-                || (this.playingAs == t[6] && this.playingAs == t[8]))
+        if (((this.getPlayingAs() == t[1] && this.getPlayingAs() == t[4])
+                || (this.getPlayingAs() == t[6] && this.getPlayingAs() == t[8]))
                 && t[7] == '_') {
             this.currentMove = new Move(3, 2);
             return true;
         }
 
-        if (((this.playingAs == t[0] && this.playingAs == t[4])
-                || (this.playingAs == t[2] && this.playingAs == t[5])
-                || (this.playingAs == t[6] && this.playingAs == t[7]))
+        if (((this.getPlayingAs() == t[0] && this.getPlayingAs() == t[4])
+                || (this.getPlayingAs() == t[2] && this.getPlayingAs() == t[5])
+                || (this.getPlayingAs() == t[6] && this.getPlayingAs() == t[7]))
                 && t[8] == '_') {
             this.currentMove = new Move(3, 3);
             return true;
@@ -107,7 +106,7 @@ public class MLPlayer implements Player{
     // e cria o movimento para bloqueá-lo caso seja possível
     private boolean closeToLose(String table) {
         char[] t = table.toCharArray();
-        char opponent = this.playingAs == 'O' ? 'X' : 'O';
+        char opponent = this.getPlayingAs() == 'O' ? 'X' : 'O';
 
         if (((opponent == t[1] && opponent == t[2])
                 || (opponent == t[3] && opponent == t[6])
@@ -195,8 +194,5 @@ public class MLPlayer implements Player{
         return "Making move level \"medium\"";
     }
 
-    @Override
-    public char getPlayingAs() {
-        return this.playingAs;
-    }
+
 }
